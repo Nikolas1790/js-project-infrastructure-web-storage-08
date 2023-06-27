@@ -1,41 +1,40 @@
 import Player from '@vimeo/player';
-// console.log(Player);
-
+import throttle from 'lodash.throttle';
+console.log(Player);
 
 const iframe = document.querySelector('iframe');
-const player = new Vimeo.Player(iframe);
-console.log(player);
+
+const options = {
+        id: 59777392,
+        width: 640,
+        loop: true
+    };
+const player = new Player(iframe, options);
 
 
-const onPlay = function (data) {
-    // event.preventDefault()
-    // data is an object containing properties specific to that event
-    //  const currentSec = data.currentTime;
+const onPlay = function (currentTime) {
+    const currentSec = currentTime.seconds;
    
-    localStorage.setItem("videoplayer-current-time", currentTime);
-    console.log(localStorage.getItem("videoplayer-current-time"))
+    localStorage.setItem("videoplayer-current-time", JSON.stringify(currentSec));
+    console.log(localStorage.getItem("videoplayer-current-time"))   
 };
 
-player.on("timeupdate", onPlay);
+player.on("timeupdate", throttle(onPlay, 1000));
 
-player.getVideoTitle().then(function(title) {
-        console.log('title:', title);
-    })
+player.setCurrentTime(JSON.parse(localStorage.getItem("videoplayer-current-time"))).then(function(seconds) {
+    // seconds = the actual time that the player seeked to
+   seconds = currentTime.seconds;
+}).catch(function(error) {
+    switch (error.name) {
+        case 'RangeError':
+            // the time was less than 0 or greater than the video’s duration
+            break;
 
-
-// player.setCurrentTime(30.456).then(function(seconds) {
-//     // seconds = the actual time that the player seeked to
-// }).catch(function(error) {
-//     switch (error.name) {
-//         case 'RangeError':
-//             // the time was less than 0 or greater than the video’s duration
-//             break;
-
-//         default:
-//             // some other error occurred
-//             break;
-//     }
-// });
+        default:
+            // some other error occurred
+            break;
+    }
+});
 
 
 

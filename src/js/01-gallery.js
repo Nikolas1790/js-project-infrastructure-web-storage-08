@@ -9,6 +9,8 @@ console.log(galleryItems);
 
 const gallery = document.querySelector('.gallery');
 
+gallery.setAttribute("style","list-style: none;")
+
 const createMarcup = galleryItems.map(({ preview, original, description }) => {
     return `<li class="gallery__item">
    <a class="gallery__link" href="${original}">

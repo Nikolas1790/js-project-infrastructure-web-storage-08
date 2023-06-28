@@ -39,12 +39,11 @@ function onSubmitForm(event) {
 
 function localStorageHistory() {
     const storageGetItem = localStorage.getItem(STORAGE_KEY);
-     console.log(storageGetItem.message)
+    //  console.log(storageGetItem.message)
     if (storageGetItem) {
          
 console.log(refs.textarea.value = JSON.parse(storageGetItem).message);
 console.log(refs.inputEmail.value = JSON.parse(storageGetItem).email)
-
 
     }   
 }

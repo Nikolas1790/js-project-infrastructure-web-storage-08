@@ -13,6 +13,7 @@ const player = new Player(iframe, options);
 
 
 const onPlay = function (currentTime) {
+     // data is an object containing properties specific to that event
     const currentSec = currentTime.seconds;
    
     localStorage.setItem("videoplayer-current-time", JSON.stringify(currentSec));
@@ -23,7 +24,7 @@ player.on("timeupdate", throttle(onPlay, 1000));
 
 player.setCurrentTime(JSON.parse(localStorage.getItem("videoplayer-current-time"))).then(function(seconds) {
     // seconds = the actual time that the player seeked to
-   seconds = currentTime.seconds;
+
 }).catch(function(error) {
     switch (error.name) {
         case 'RangeError':

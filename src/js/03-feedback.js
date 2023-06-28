@@ -42,8 +42,8 @@ function localStorageHistory() {
     //  console.log(storageGetItem.message)
     if (storageGetItem) {
          
-console.log(refs.textarea.value = JSON.parse(storageGetItem).message);
-console.log(refs.inputEmail.value = JSON.parse(storageGetItem).email)
+console.log(refs.textarea.value = JSON.parse(storageGetItem).message || '');
+console.log(refs.inputEmail.value = JSON.parse(storageGetItem).email || '')
 
     }   
 }

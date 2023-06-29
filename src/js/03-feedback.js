@@ -28,24 +28,25 @@ function onSubmitForm(event) {
     if(!refs.inputEmail.value || !refs.textarea.value){
         alert('Заполните все поля, пожалуйста) 🍀')
     } else {
-        console.log('email:', refs.inputEmail.value);
-        console.log('massag:', refs.textarea.value);
-        
-      event.target.reset();
-         localStorage.removeItem(STORAGE_KEY)  
+        console.log(obj);     
+         event.target.reset();
+        localStorage.removeItem(STORAGE_KEY);
+        obj = {};
+       
     }
     
 };
 
 function localStorageHistory() {
     const storageGetItem = localStorage.getItem(STORAGE_KEY);
-    //  console.log(storageGetItem.message)
+  
     if (storageGetItem) {
-         
-console.log(refs.textarea.value = JSON.parse(storageGetItem).message || '');
-console.log(refs.inputEmail.value = JSON.parse(storageGetItem).email || '')
+         obj = JSON.parse(storageGetItem);
+        console.log(obj)
+        refs.textarea.value = obj.message;
+        refs.inputEmail.value = obj.email;
 
-    }   
+
 }
 
 

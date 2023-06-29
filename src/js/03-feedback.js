@@ -17,7 +17,7 @@ refs.feedbackForm.addEventListener('input', throttle(onInputForm, 500));
 localStorageHistory();
 
 function onInputForm(event) {    
-    console.log(obj[event.target.name] = event.target.value);
+    obj[event.target.name] = event.target.value;
     localStorage.setItem(STORAGE_KEY, JSON.stringify(obj));
     
  }
@@ -43,8 +43,8 @@ function localStorageHistory() {
     if (storageGetItem) {
          obj = JSON.parse(storageGetItem);
         console.log(obj)
-        refs.textarea.value = obj.message;
-        refs.inputEmail.value = obj.email;
+        refs.textarea.value = obj.message || '';
+        refs.inputEmail.value = obj.email || '';
 
 
 }

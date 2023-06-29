@@ -41,12 +41,12 @@ function localStorageHistory() {
     const storageGetItem = localStorage.getItem(STORAGE_KEY);
   
     if (storageGetItem) {
-         obj = JSON.parse(storageGetItem);
+        obj = JSON.parse(storageGetItem);
         
         refs.textarea.value = obj.message || '';
         refs.inputEmail.value = obj.email || '';
 
-
+    }
 }
 
 

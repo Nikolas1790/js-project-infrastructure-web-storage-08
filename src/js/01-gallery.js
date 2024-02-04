@@ -4,8 +4,6 @@ import { galleryItems } from './gallery-items';
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
 
-console.log(galleryItems);
-
 const gallery = document.querySelector('.gallery');
 
 gallery.setAttribute("style","list-style: none;")
@@ -18,7 +16,6 @@ const createMarcup = galleryItems.map(({ preview, original, description }) => {
 </li>`
 }).join("");
 gallery.insertAdjacentHTML("beforeend", createMarcup);
-console.log(createMarcup);
 
 var lightbox = new SimpleLightbox('.gallery a', {captionsData: `alt`, captionDelay: 250 });
 

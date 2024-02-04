@@ -6,7 +6,6 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 
 console.log(galleryItems);
 
-
 const gallery = document.querySelector('.gallery');
 
 gallery.setAttribute("style","list-style: none;")
